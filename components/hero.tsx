@@ -10,13 +10,13 @@ export function Hero() {
       <div className="lg:w-2/5 lg:fixed lg:h-screen lg:left-0 lg:top-0 flex flex-col justify-between p-8 lg:p-12 border-b lg:border-b-0 lg:border-r border-border">
         <div>
           <h1 className="font-serif text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-4 text-balance">
-            Sarah Mitchell
+            Archana Dharaneedharan
           </h1>
           <p className="text-xl lg:text-2xl text-primary font-medium mb-6">
             Marketing Analyst
           </p>
           <p className="text-muted-foreground leading-relaxed max-w-md">
-            Transforming complex data into actionable marketing strategies. 
+            Transforming complex data into actionable marketing strategies.
             Specializing in consumer insights, campaign optimization, and predictive analytics.
           </p>
         </div>
@@ -38,7 +38,7 @@ export function Hero() {
 
         <div className="flex items-center gap-4">
           <Button variant="ghost" size="icon" asChild>
-            <a href="mailto:sarah@example.com" aria-label="Email">
+            <a href="mailto:archana.dharaneedharan@gmail.com" aria-label="Email">
               <Mail className="h-5 w-5" />
             </a>
           </Button>
@@ -63,17 +63,17 @@ export function Hero() {
             <h2 className="text-sm uppercase tracking-wider text-primary mb-8">About</h2>
             <div className="space-y-6 text-muted-foreground leading-relaxed">
               <p>
-                With over 7 years of experience in marketing analytics, I help brands understand their customers 
-                and optimize their marketing spend through data-driven insights. My approach combines statistical 
+                With over 7 years of experience in marketing analytics, I help brands understand their customers
+                and optimize their marketing spend through data-driven insights. My approach combines statistical
                 rigor with creative problem-solving.
               </p>
               <p>
-                I've worked with Fortune 500 companies and fast-growing startups across retail, tech, and 
-                consumer goods industries. My expertise includes multi-touch attribution, customer segmentation, 
+                I've worked with Fortune 500 companies and fast-growing startups across retail, tech, and
+                consumer goods industries. My expertise includes multi-touch attribution, customer segmentation,
                 marketing mix modeling, and A/B testing frameworks.
               </p>
               <p>
-                When I'm not diving into datasets, you can find me speaking at marketing conferences, 
+                When I'm not diving into datasets, you can find me speaking at marketing conferences,
                 mentoring aspiring analysts, or exploring the latest in machine learning applications for marketing.
               </p>
             </div>
