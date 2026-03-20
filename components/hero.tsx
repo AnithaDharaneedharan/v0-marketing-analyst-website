@@ -97,9 +97,13 @@ export function Hero() {
               </div>
             </div>
 
-            <div className="mt-16 animate-bounce">
-              <ArrowDown className="h-6 w-6 text-muted-foreground" />
-            </div>
+            <button 
+              onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
+              className="mt-16 animate-bounce cursor-pointer hover:text-primary transition-colors"
+              aria-label="Scroll to experience section"
+            >
+              <ArrowDown className="h-6 w-6 text-muted-foreground hover:text-primary" />
+            </button>
           </div>
         </section>
       </div>
