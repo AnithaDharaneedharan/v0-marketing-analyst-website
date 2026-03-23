@@ -45,8 +45,8 @@ export function Navbar() {
 
   return (
     <header className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
-      {/* Desktop pill nav */}
-      <nav className="hidden sm:flex items-center bg-foreground rounded-2xl px-2 py-2 gap-1 shadow-lg">
+      {/* Desktop pill nav - dark pill on dark bg like thibaut.cool */}
+      <nav className="hidden sm:flex items-center bg-secondary border border-border rounded-2xl px-2 py-2 gap-1 shadow-2xl backdrop-blur-sm">
         {navLinks.map((link) => {
           const isActive = activeSection === link.href.replace("#", "")
           return (
@@ -55,8 +55,8 @@ export function Navbar() {
               onClick={() => handleNavClick(link.href)}
               className={`px-6 py-2 rounded-xl text-sm transition-all duration-200 font-sans ${
                 isActive
-                  ? "bg-background text-foreground font-semibold"
-                  : "text-background/60 hover:text-background font-normal"
+                  ? "bg-foreground text-background font-semibold"
+                  : "text-muted-foreground hover:text-foreground font-normal"
               }`}
             >
               {link.name}
@@ -67,11 +67,11 @@ export function Navbar() {
 
       {/* Mobile nav */}
       <div className="sm:hidden w-full">
-        <div className="flex items-center justify-between bg-foreground rounded-2xl px-5 py-3 shadow-lg">
-          <span className="text-background text-sm font-semibold font-sans">archana</span>
+        <div className="flex items-center justify-between bg-secondary border border-border rounded-2xl px-5 py-3 shadow-2xl">
+          <span className="text-foreground text-sm font-semibold font-sans">archana</span>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-background p-1"
+            className="text-foreground p-1"
             aria-label="Toggle menu"
           >
             {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -79,7 +79,7 @@ export function Navbar() {
         </div>
 
         {isOpen && (
-          <div className="mt-2 bg-foreground rounded-2xl px-2 py-2 shadow-lg flex flex-col gap-1">
+          <div className="mt-2 bg-secondary border border-border rounded-2xl px-2 py-2 shadow-2xl flex flex-col gap-1">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.replace("#", "")
               return (
@@ -88,8 +88,8 @@ export function Navbar() {
                   onClick={() => handleNavClick(link.href)}
                   className={`w-full text-left px-5 py-3 rounded-xl text-sm transition-all duration-200 font-sans ${
                     isActive
-                      ? "bg-background text-foreground font-semibold"
-                      : "text-background/60 hover:text-background"
+                      ? "bg-foreground text-background font-semibold"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {link.name}

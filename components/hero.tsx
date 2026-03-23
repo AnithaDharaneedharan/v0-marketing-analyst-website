@@ -18,9 +18,8 @@ export function Hero() {
           </span>
         </h1>
 
-        {/* Profile Image - Below text like thibaut.cool */}
         <div className="mt-16 flex justify-center">
-          <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden bg-muted border-4 border-background shadow-2xl flex-shrink-0">
+          <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden bg-muted border-2 border-border shadow-2xl flex-shrink-0">
             <img
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-03-23%20at%2021.22.16-al2qnWlKFyZlbRjXqOblbJQ5uQDGUm.jpeg"
               alt="Archana Dharaneedharan"
