@@ -56,7 +56,7 @@ export function Navbar() {
               className={`px-6 py-2 rounded-xl text-sm transition-all duration-200 font-sans ${
                 isActive
                   ? "bg-foreground text-background font-semibold"
-                  : "text-muted-foreground hover:text-foreground font-normal"
+                  : "text-foreground/70 hover:text-foreground font-normal"
               }`}
             >
               {link.name}
@@ -89,7 +89,7 @@ export function Navbar() {
                   className={`w-full text-left px-5 py-3 rounded-xl text-sm transition-all duration-200 font-sans ${
                     isActive
                       ? "bg-foreground text-background font-semibold"
-                      : "text-muted-foreground hover:text-foreground"
+                      : "text-foreground/70 hover:text-foreground"
                   }`}
                 >
                   {link.name}
