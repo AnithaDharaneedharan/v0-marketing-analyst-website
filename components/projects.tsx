@@ -1,7 +1,6 @@
 "use client"
 
 import { ArrowUpRight } from "lucide-react"
-import Image from "next/image"
 
 const projects = [
   {
@@ -67,11 +66,10 @@ export function Projects() {
               <div className="flex flex-col lg:flex-row">
                 {/* Image */}
                 <div className="relative lg:w-2/5 h-64 lg:h-80 bg-muted overflow-hidden">
-                  <Image
+                  <img
                     src={project.image}
                     alt={project.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   {/* Result Badge */}
                   <div className="absolute top-4 left-4 bg-accent text-accent-foreground px-4 py-1.5 rounded-full text-sm font-semibold">
