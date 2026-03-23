@@ -1,10 +1,11 @@
 "use client"
-
+// Navigation component - updated
 import { useEffect, useState } from "react"
 
 const navLinks = [
   { name: "Home", href: "#home" },
   { name: "Works", href: "#projects" },
+  { name: "Experience", href: "#experience" },
   { name: "About me", href: "#about" },
   { name: "Contact", href: "#contact" },
 ]
@@ -14,7 +15,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "projects", "about", "contact"]
+      const sections = ["home", "projects", "experience", "about", "contact"]
       const scrollPosition = window.scrollY + 120
 
       for (const section of sections) {
@@ -34,7 +35,6 @@ export function Navbar() {
   }, [])
 
   const handleNavClick = (href: string) => {
-    setIsOpen(false)
     const id = href.replace("#", "")
     const el = document.getElementById(id)
     if (el) el.scrollIntoView({ behavior: "smooth" })

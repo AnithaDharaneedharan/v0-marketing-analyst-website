@@ -42,21 +42,7 @@ export function About() {
           </p>
         </div>
 
-        {/* Experience Summary */}
-        <div className="mt-16 p-8 bg-card rounded-3xl border border-border">
-          <h3 className="text-lg font-semibold text-foreground mb-6">Work Experience</h3>
-          <p className="text-muted-foreground leading-relaxed mb-6">
-            Over the past several years, I have worked as a Marketing Analyst at leading companies, 
-            where I developed expertise in building attribution models, customer segmentation frameworks, 
-            and real-time analytics dashboards. As a data enthusiast, I've built extensive reporting 
-            pipelines and created optimized analytics workflows to deliver insights across organizations.
-          </p>
-          <p className="text-muted-foreground leading-relaxed">
-            This experience taught me to excel under tight deadlines and deliver actionable insights 
-            that drive business decisions. I've gained extensive experience with tools like Python, R, 
-            SQL, Tableau, and various marketing platforms.
-          </p>
-        </div>
+
       </div>
     </section>
   )
