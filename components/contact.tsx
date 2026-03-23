@@ -1,161 +1,81 @@
 "use client"
 
 import { useState } from "react"
-import { ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
+import { Linkedin, Twitter, Mail, Copy, Check } from "lucide-react"
 
-const serviceOptions = [
-  "Data Analytics",
-  "Growth Strategy",
-  "Campaign Optimization",
-  "All Services"
-]
-
-const budgetOptions = [
-  "Under $5K",
-  "$5K-$10K",
-  "$10K-$25K",
-  "$25K+"
+const socialLinks = [
+  { icon: Twitter, href: "https://twitter.com", label: "Twitter Profile", description: "I'm most active here!" },
+  { icon: Linkedin, href: "https://linkedin.com/in/arch2025", label: "LinkedIn", description: "Let's connect professionally" },
+  { icon: Mail, href: "mailto:archana.dharaneedharan@gmail.com", label: "Email", description: "For detailed inquiries" },
 ]
 
 export function Contact() {
-  const [selectedService, setSelectedService] = useState("")
-  const [selectedBudget, setSelectedBudget] = useState("")
+  const [copied, setCopied] = useState(false)
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText("archana.dharaneedharan@gmail.com")
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
 
   return (
-    <section id="contact" className="py-20 lg:py-32 bg-card">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-          {/* Left - Text */}
-          <div>
-            <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-4">
-              Book a call
-            </p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-foreground mb-6">
-              Let&apos;s get{" "}
-              <br className="hidden sm:block" />
-              <span className="font-serif italic">started</span>
-            </h2>
-            <p className="text-muted-foreground leading-relaxed max-w-md mb-8">
-              Ready to transform your marketing data? Get in touch and we&apos;ll show you what&apos;s possible for your brand.
-            </p>
+    <section id="contact" className="py-20 lg:py-32 px-6 lg:px-0">
+      <div className="max-w-4xl mx-auto">
+        {/* Section Header - Thibaut style */}
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-foreground mb-12">
+          # Hit me{" "}
+          <span className="font-serif italic">up</span>
+        </h2>
 
-            {/* Social Proof */}
-            <div className="flex items-center gap-4">
-              <div className="flex -space-x-2">
-                {[1, 2, 3, 4].map((i) => (
-                  <div 
-                    key={i} 
-                    className="w-10 h-10 rounded-full bg-muted border-2 border-card"
-                  />
-                ))}
-              </div>
-              <div>
-                <div className="flex items-center gap-1 text-accent">
-                  {"★★★★★".split("").map((star, i) => (
-                    <span key={i}>{star}</span>
-                  ))}
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  Trusted by 15+ clients
-                </p>
-              </div>
-            </div>
-          </div>
+        {/* Contact Content */}
+        <div className="space-y-8">
+          <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+            Want to get in touch with me? The best way to reach out would be to{" "}
+            <span className="text-foreground font-medium">email me!</span>
+          </p>
 
-          {/* Right - Form */}
-          <div className="bg-background rounded-3xl p-8 lg:p-10 border border-border">
-            <form className="space-y-6">
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Name *</Label>
-                  <Input 
-                    id="name" 
-                    placeholder="Your name" 
-                    className="rounded-xl h-12"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email *</Label>
-                  <Input 
-                    id="email" 
-                    type="email" 
-                    placeholder="you@company.com" 
-                    className="rounded-xl h-12"
-                  />
-                </div>
-              </div>
+          {/* Copy Email Button */}
+          <button
+            onClick={copyEmail}
+            className="group flex items-center gap-3 bg-primary text-primary-foreground px-6 py-4 rounded-2xl hover:opacity-90 transition-opacity"
+          >
+            {copied ? (
+              <>
+                <Check className="h-5 w-5" />
+                <span className="font-medium">Email Copied!</span>
+              </>
+            ) : (
+              <>
+                <Copy className="h-5 w-5" />
+                <span className="font-medium">Copy my E-mail</span>
+              </>
+            )}
+          </button>
 
-              {/* Service Selection */}
-              <div className="space-y-2">
-                <Label>What services are you interested in?</Label>
-                <div className="flex flex-wrap gap-2">
-                  {serviceOptions.map((service) => (
-                    <button
-                      key={service}
-                      type="button"
-                      onClick={() => setSelectedService(service)}
-                      className={`px-4 py-2 rounded-full text-sm border transition-colors ${
-                        selectedService === service
-                          ? "bg-primary text-primary-foreground border-primary"
-                          : "border-border text-muted-foreground hover:border-foreground hover:text-foreground"
-                      }`}
-                    >
-                      {service}
-                    </button>
-                  ))}
-                </div>
-              </div>
+          <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+            However you can start the conversation through{" "}
+            <span className="text-foreground font-medium">Twitter</span>, it's the social where I'm the most active!
+          </p>
 
-              {/* Budget Selection */}
-              <div className="space-y-2">
-                <Label>Project budget?</Label>
-                <div className="flex flex-wrap gap-2">
-                  {budgetOptions.map((budget) => (
-                    <button
-                      key={budget}
-                      type="button"
-                      onClick={() => setSelectedBudget(budget)}
-                      className={`px-4 py-2 rounded-full text-sm border transition-colors ${
-                        selectedBudget === budget
-                          ? "bg-primary text-primary-foreground border-primary"
-                          : "border-border text-muted-foreground hover:border-foreground hover:text-foreground"
-                      }`}
-                    >
-                      {budget}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Message */}
-              <div className="space-y-2">
-                <Label htmlFor="message">Tell us about your business... *</Label>
-                <Textarea 
-                  id="message" 
-                  placeholder="Share your goals and challenges..."
-                  className="rounded-xl min-h-[120px] resize-none"
-                />
-              </div>
-
-              {/* Submit */}
-              <Button 
-                type="submit" 
-                size="lg" 
-                className="w-full rounded-full h-12 gap-2 group"
+          {/* Social Links */}
+          <div className="grid sm:grid-cols-3 gap-4 mt-8">
+            {socialLinks.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target={social.href.startsWith("http") ? "_blank" : undefined}
+                rel="noopener noreferrer"
+                className="group flex items-center gap-4 p-4 bg-card border border-border rounded-2xl hover:border-foreground/30 transition-colors"
               >
-                Book a call
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-
-              <p className="text-xs text-center text-muted-foreground">
-                By submitting, you agree to our{" "}
-                <a href="#" className="underline hover:text-foreground">terms & conditions</a>.
-              </p>
-            </form>
+                <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  <social.icon className="h-5 w-5" />
+                </div>
+                <div>
+                  <p className="font-medium text-foreground text-sm">{social.label}</p>
+                  <p className="text-xs text-muted-foreground">{social.description}</p>
+                </div>
+              </a>
+            ))}
           </div>
         </div>
       </div>
