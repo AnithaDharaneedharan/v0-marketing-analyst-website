@@ -14,6 +14,7 @@ const nextConfig = {
       },
     ],
   },
+  // Force rebuild to clear stale cache
 }
 
 export default nextConfig

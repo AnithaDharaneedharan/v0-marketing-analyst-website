@@ -5,8 +5,8 @@ export function Hero() {
     <section id="home" className="min-h-screen flex items-center justify-center px-6 lg:px-0">
       <div className="max-w-4xl mx-auto text-center py-20 lg:py-32">
         {/* Main Heading - Thibaut style large text */}
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-medium text-foreground leading-tight tracking-tight">
-          <span className="font-serif text-primary">Archana Dharaneedharan,</span>{" "}
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-semibold text-foreground leading-tight tracking-tight">
+          <span className="text-primary">Archana Dharaneedharan,</span>{" "}
           <span className="text-muted-foreground">
             Data-Driven Marketing Strategist who transforms insights into{" "}
             <span className="font-serif italic text-foreground">growth.</span>

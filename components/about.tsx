@@ -5,7 +5,7 @@ export function About() {
     <section id="about" className="py-20 lg:py-32 px-6 lg:px-0">
       <div className="max-w-4xl mx-auto">
         {/* Section Header - Thibaut style */}
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-foreground mb-12">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground mb-12">
           # About{" "}
           <span className="font-serif italic">Me</span>
         </h2>
