@@ -1,7 +1,35 @@
 "use client"
 
-import { ArrowDown, Linkedin, Mail, Twitter } from "lucide-react"
+import { ArrowDown, Linkedin, Mail, Twitter, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+
+const contactLinks = [
+  {
+    icon: Mail,
+    label: "Email",
+    value: "archana.dharaneedharan@gmail.com",
+    href: "mailto:archana.dharaneedharan@gmail.com"
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "linkedin.com/in/archana",
+    href: "https://linkedin.com/in/archana"
+  },
+  {
+    icon: Twitter,
+    label: "Twitter",
+    value: "@archanaanalyst",
+    href: "https://twitter.com/archanaanalyst"
+  },
+  {
+    icon: FileText,
+    label: "Resume",
+    value: "Download PDF",
+    href: "/resume.pdf"
+  }
+]
 
 export function Hero() {
   return (
@@ -19,6 +47,30 @@ export function Hero() {
             Transforming complex data into actionable marketing strategies.
             Specializing in consumer insights, campaign optimization, and predictive analytics.
           </p>
+
+          {/* Contact Section */}
+          <div className="mt-12">
+            <h2 className="text-sm uppercase tracking-wider text-primary mb-6">Get in Touch</h2>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {contactLinks.map((link, index) => (
+                <a key={index} href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">
+                  <Card className="group hover:border-primary transition-colors cursor-pointer h-full">
+                    <CardContent className="p-4 flex items-start gap-3">
+                      <div className="p-2 rounded-lg bg-secondary group-hover:bg-primary/10 transition-colors flex-shrink-0">
+                        <link.icon className="h-4 w-4 text-primary" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-xs text-muted-foreground mb-1">{link.label}</p>
+                        <p className="text-sm text-foreground font-medium group-hover:text-primary transition-colors truncate">
+                          {link.value}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
 
         <nav className="hidden lg:flex flex-col gap-4 my-8">
