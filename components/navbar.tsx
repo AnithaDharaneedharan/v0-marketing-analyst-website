@@ -46,7 +46,7 @@ export function Navbar() {
   return (
     <header className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
       {/* Desktop pill nav - dark pill on dark bg like thibaut.cool */}
-      <nav className="hidden sm:flex items-center bg-secondary border border-border rounded-2xl px-2 py-2 gap-1 shadow-2xl backdrop-blur-sm">
+      <nav className="hidden md:flex items-center bg-secondary border border-border rounded-2xl px-2 py-2 gap-1 shadow-2xl backdrop-blur-sm">
         {navLinks.map((link) => {
           const isActive = activeSection === link.href.replace("#", "")
           return (
@@ -66,7 +66,7 @@ export function Navbar() {
       </nav>
 
       {/* Mobile nav */}
-      <div className="sm:hidden w-full">
+      <div className="md:hidden w-full">
         <div className="flex items-center justify-between bg-secondary border border-border rounded-2xl px-5 py-3 shadow-2xl">
           <span className="text-foreground text-sm font-semibold font-sans">archana</span>
           <button
