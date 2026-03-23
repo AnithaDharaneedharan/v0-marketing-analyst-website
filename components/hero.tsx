@@ -68,7 +68,7 @@ export function Hero() {
           <div className="flex-shrink-0">
             <div className="relative w-64 h-80 sm:w-80 sm:h-96 lg:w-96 lg:h-[480px] rounded-3xl overflow-hidden bg-muted">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-03-23%20at%2021.22.16-al2qnWlKFyZlbJXqOblbJQ5uQDGUm.jpeg"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-03-23%20at%2021.22.16-al2qnWlKFyZlbRjXqOblbJQ5uQDGUm.jpeg"
                 alt="Archana Dharaneedharan"
                 fill
                 className="object-cover object-top"
