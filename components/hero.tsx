@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
 const socialLinks = [
-  { icon: Linkedin, href: "https://linkedin.com/in/archana", label: "LinkedIn" },
+  { icon: Linkedin, href: "https://linkedin.com/in/arch2025", label: "LinkedIn" },
   { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
   { icon: Mail, href: "mailto:archana.dharaneedharan@gmail.com", label: "Email" },
 ]
@@ -35,10 +35,14 @@ export function Hero() {
 
             {/* Main Heading */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-foreground leading-tight tracking-tight">
+              <span className="block text-3xl sm:text-4xl lg:text-5xl mb-2 text-primary font-serif">Archana Dharaneedharan</span>
               Marketing analytics{" "}
               <br className="hidden sm:block" />
               done <span className="font-serif italic">right</span>
             </h1>
+
+            {/* Subtitle */}
+            <p className="mt-2 text-sm text-muted-foreground font-medium">Data-Driven Marketing Strategist</p>
 
             {/* Description */}
             <p className="mt-6 text-muted-foreground text-lg max-w-md leading-relaxed">
