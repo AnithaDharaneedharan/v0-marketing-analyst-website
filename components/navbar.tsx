@@ -1,5 +1,5 @@
 "use client"
-
+// Navigation component - updated
 import { useEffect, useState } from "react"
 
 const navLinks = [
