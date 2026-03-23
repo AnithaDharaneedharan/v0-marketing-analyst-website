@@ -1,10 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import { Linkedin, Twitter, Mail, Copy, Check } from "lucide-react"
+import { Linkedin, Mail, Copy, Check } from "lucide-react"
 
 const socialLinks = [
-  { icon: Twitter, href: "https://twitter.com", label: "Twitter Profile", description: "I'm most active here!" },
   { icon: Linkedin, href: "https://linkedin.com/in/arch2025", label: "LinkedIn", description: "Let's connect professionally" },
   { icon: Mail, href: "mailto:archana.dharaneedharan@gmail.com", label: "Email", description: "For detailed inquiries" },
 ]
@@ -53,8 +52,8 @@ export function Contact() {
           </button>
 
           <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-            However you can start the conversation through{" "}
-            <span className="text-foreground font-medium">Twitter</span>, it's the social where I'm the most active!
+            Feel free to reach out through{" "}
+            <span className="text-foreground font-medium">LinkedIn or email</span> to get in touch!
           </p>
 
           {/* Social Links */}
