@@ -39,7 +39,7 @@ export function Experience() {
         {/* Section Header */}
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground mb-16">
           Where I've{" "}
-          <span className="font-serif italic">worked</span>
+          <span className="font-sans">worked</span>
         </h2>
 
         {/* Experience Cards */}

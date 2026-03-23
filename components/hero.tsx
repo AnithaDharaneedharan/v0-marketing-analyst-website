@@ -9,12 +9,12 @@ export function Hero() {
           <span className="text-primary">Archana Dharaneedharan,</span>{" "}
           <span className="text-muted-foreground">
             Data-Driven Marketing Strategist who transforms insights into{" "}
-            <span className="font-serif italic text-foreground">growth.</span>
+            <span className="font-sans text-foreground">growth.</span>
           </span>
           <br className="hidden lg:block" />
           <span className="text-muted-foreground">
             Your analytics partner, with more{" "}
-            <span className="font-serif italic text-foreground">impact.</span>
+            <span className="font-sans text-foreground">impact.</span>
           </span>
         </h1>
 

@@ -33,7 +33,7 @@ export function Services() {
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground">
             How I can help{" "}
             <br className="hidden sm:block" />
-            you <span className="font-serif italic">grow</span>
+            you <span className="font-sans">grow</span>
           </h2>
         </div>
 

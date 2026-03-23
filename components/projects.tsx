@@ -52,7 +52,7 @@ export function Projects() {
         {/* Section Header - Thibaut style */}
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground mb-16">
           # Cool stuff I've{" "}
-          <span className="font-serif italic">done</span>
+          <span className="font-sans">done</span>
         </h2>
 
         {/* Projects List */}
