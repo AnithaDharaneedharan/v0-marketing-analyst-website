@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Menu, X, Linkedin, Twitter, Mail } from "lucide-react"
+import { Menu, X } from "lucide-react"
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -11,21 +11,14 @@ const navLinks = [
   { name: "Contact", href: "#contact" },
 ]
 
-const socialLinks = [
-  { icon: Twitter, href: "https://twitter.com", label: "Twitter / X" },
-  { icon: Linkedin, href: "https://linkedin.com/in/arch2025", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:archana.dharaneedharan@gmail.com", label: "Email" },
-]
-
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
-  const [isContactOpen, setIsContactOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
       const sections = ["home", "projects", "about", "contact"]
-      const scrollPosition = window.scrollY + 200
+      const scrollPosition = window.scrollY + 120
 
       for (const section of sections) {
         const element = document.getElementById(section)
@@ -43,136 +36,69 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const handleNavClick = (href: string) => {
+    setIsOpen(false)
+    const id = href.replace("#", "")
+    const el = document.getElementById(id)
+    if (el) el.scrollIntoView({ behavior: "smooth" })
+  }
+
   return (
-    <>
-      {/* Desktop Sticky Sidebar - Left */}
-      <nav className="hidden lg:flex fixed left-0 top-0 h-screen w-64 flex-col justify-between p-8 z-50">
-        {/* Logo */}
-        <Link href="/" className="text-lg font-semibold text-foreground flex items-center gap-2">
-          <div className="w-2 h-2 bg-foreground rounded-full" />
-          archana
-        </Link>
-
-        {/* Navigation Links */}
-        <div className="flex flex-col gap-1">
-          {navLinks.map((link) => (
-            <Link
+    <header className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
+      {/* Desktop pill nav */}
+      <nav className="hidden sm:flex items-center bg-foreground rounded-2xl px-2 py-2 gap-1 shadow-lg">
+        {navLinks.map((link) => {
+          const isActive = activeSection === link.href.replace("#", "")
+          return (
+            <button
               key={link.name}
-              href={link.href}
-              className={`py-2 text-sm transition-colors ${
-                activeSection === link.href.replace("#", "")
-                  ? "text-foreground font-medium"
-                  : "text-muted-foreground hover:text-foreground"
+              onClick={() => handleNavClick(link.href)}
+              className={`px-6 py-2 rounded-xl text-sm transition-all duration-200 font-sans ${
+                isActive
+                  ? "bg-background text-foreground font-semibold"
+                  : "text-background/60 hover:text-background font-normal"
               }`}
             >
               {link.name}
-            </Link>
-          ))}
-        </div>
-
-        {/* Contact Popup Trigger */}
-        <div className="relative">
-          <button
-            onClick={() => setIsContactOpen(!isContactOpen)}
-            className="text-xs text-muted-foreground hover:text-foreground transition-colors text-left"
-          >
-            Prefer Email and Twitter DMs<br />
-            <span className="underline">if you need a quick response!</span>
-          </button>
-
-          {/* Contact Popup */}
-          {isContactOpen && (
-            <div className="absolute bottom-full left-0 mb-4 bg-card border border-border rounded-2xl p-6 shadow-xl min-w-[240px]">
-              <div className="space-y-4">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target={social.href.startsWith("http") ? "_blank" : undefined}
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    <social.icon className="h-4 w-4" />
-                    {social.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
+            </button>
+          )
+        })}
       </nav>
 
-      {/* Desktop Sticky Sidebar - Right */}
-      <nav className="hidden lg:flex fixed right-0 top-0 h-screen w-64 flex-col justify-between p-8 z-50">
-        <div />
-        
-        {/* Right Navigation - same links */}
-        <div className="flex flex-col gap-1 items-end">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className={`py-2 text-sm transition-colors ${
-                activeSection === link.href.replace("#", "")
-                  ? "text-foreground font-medium"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {link.name}
-            </Link>
-          ))}
-        </div>
-
-        <div />
-      </nav>
-
-      {/* Mobile Header */}
-      <nav className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
-        <div className="flex items-center justify-between px-6 h-16">
-          <Link href="/" className="text-lg font-semibold text-foreground flex items-center gap-2">
-            <div className="w-2 h-2 bg-foreground rounded-full" />
-            archana
-          </Link>
-
+      {/* Mobile nav */}
+      <div className="sm:hidden w-full">
+        <div className="flex items-center justify-between bg-foreground rounded-2xl px-5 py-3 shadow-lg">
+          <span className="text-background text-sm font-semibold font-sans">archana</span>
           <button
-            className="p-2 text-foreground"
             onClick={() => setIsOpen(!isOpen)}
+            className="text-background p-1"
+            aria-label="Toggle menu"
           >
             {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isOpen && (
-          <div className="bg-background border-b border-border px-6 py-6">
-            <div className="space-y-4">
-              {navLinks.map((link) => (
-                <Link
+          <div className="mt-2 bg-foreground rounded-2xl px-2 py-2 shadow-lg flex flex-col gap-1">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.replace("#", "")
+              return (
+                <button
                   key={link.name}
-                  href={link.href}
-                  className="block text-lg text-foreground"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => handleNavClick(link.href)}
+                  className={`w-full text-left px-5 py-3 rounded-xl text-sm transition-all duration-200 font-sans ${
+                    isActive
+                      ? "bg-background text-foreground font-semibold"
+                      : "text-background/60 hover:text-background"
+                  }`}
                 >
                   {link.name}
-                </Link>
-              ))}
-            </div>
-            <div className="mt-8 pt-6 border-t border-border flex gap-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target={social.href.startsWith("http") ? "_blank" : undefined}
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <social.icon className="h-4 w-4" />
-                </a>
-              ))}
-            </div>
+                </button>
+              )
+            })}
           </div>
         )}
-      </nav>
-    </>
+      </div>
+    </header>
   )
 }
