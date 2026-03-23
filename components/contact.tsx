@@ -23,7 +23,7 @@ export function Contact() {
         {/* Section Header - Thibaut style */}
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground mb-12">
           # Hit me{" "}
-          <span className="font-serif italic">up</span>
+          <span className="font-sans">up</span>
         </h2>
 
         {/* Contact Content */}

@@ -7,7 +7,7 @@ export function About() {
         {/* Section Header - Thibaut style */}
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground mb-12">
           # About{" "}
-          <span className="font-serif italic">Me</span>
+          <span className="font-sans">Me</span>
         </h2>
 
         {/* About Content */}
@@ -19,7 +19,7 @@ export function About() {
 
           <p>
             Based in the heart of the tech industry, I help brands{" "}
-            <span className="text-foreground font-serif italic">grow smarter</span> (it rhymes).
+            <span className="text-foreground font-medium">grow smarter</span> (it rhymes).
           </p>
 
           <p>
@@ -38,7 +38,7 @@ export function About() {
 
           <p>
             If you're working on something that needs some{" "}
-            <span className="font-serif italic text-foreground">analytics magic</span>, feel free to reach out.
+            <span className="font-medium text-foreground">analytics magic</span>, feel free to reach out.
           </p>
         </div>
 
