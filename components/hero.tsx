@@ -35,8 +35,8 @@ export function Hero() {
   return (
     <section className="min-h-screen flex flex-col lg:flex-row">
       {/* Left Panel - Sticky on desktop */}
-      <div className="lg:w-2/5 lg:fixed lg:h-screen lg:left-0 lg:top-0 flex flex-col justify-between p-8 lg:p-12 border-b lg:border-b-0 lg:border-r border-border">
-        <div>
+      <div className="lg:w-2/5 lg:fixed lg:h-screen lg:left-0 lg:top-0 flex flex-col justify-between p-8 lg:p-12 border-b lg:border-b-0 lg:border-r border-border overflow-y-auto">
+        <div className="flex-1 flex flex-col justify-between">
           <h1 className="font-serif text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-4 text-balance">
             Archana Dharaneedharan
           </h1>
@@ -49,9 +49,9 @@ export function Hero() {
           </p>
 
           {/* Contact Section */}
-          <div className="mt-12">
-            <h2 className="text-sm uppercase tracking-wider text-primary mb-6">Get in Touch</h2>
-            <div className="grid sm:grid-cols-2 gap-4">
+          <div className="mt-8 lg:mt-12">
+            <h2 className="text-sm uppercase tracking-wider text-primary mb-4">Get in Touch</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
               {contactLinks.map((link, index) => (
                 <a key={index} href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">
                   <Card className="group hover:border-primary transition-colors cursor-pointer h-full">
