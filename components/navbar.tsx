@@ -1,82 +1,104 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
 
 const navLinks = [
-  { name: "Home", href: "#" },
-  { name: "About", href: "#about" },
-  { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
+  { name: "Home", href: "#home" },
+  { name: "Works", href: "#projects" },
+  { name: "About me", href: "#about" },
+  { name: "Contact", href: "#contact" },
 ]
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState("home")
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["home", "projects", "about", "contact"]
+      const scrollPosition = window.scrollY + 120
+
+      for (const section of sections) {
+        const element = document.getElementById(section)
+        if (element) {
+          const { offsetTop, offsetHeight } = element
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section)
+            break
+          }
+        }
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  const handleNavClick = (href: string) => {
+    setIsOpen(false)
+    const id = href.replace("#", "")
+    const el = document.getElementById(id)
+    if (el) el.scrollIntoView({ behavior: "smooth" })
+  }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-              <span className="text-primary-foreground font-semibold text-sm">A</span>
-            </div>
-            <span className="font-medium text-foreground">archana</span>
-          </Link>
+    <header className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
+      {/* Desktop pill nav - dark pill on dark bg like thibaut.cool */}
+      <nav className="hidden sm:flex items-center bg-secondary border border-border rounded-2xl px-2 py-2 gap-1 shadow-2xl backdrop-blur-sm">
+        {navLinks.map((link) => {
+          const isActive = activeSection === link.href.replace("#", "")
+          return (
+            <button
+              key={link.name}
+              onClick={() => handleNavClick(link.href)}
+              className={`px-6 py-2 rounded-xl text-sm transition-all duration-200 font-sans ${
+                isActive
+                  ? "bg-foreground text-background font-semibold"
+                  : "text-muted-foreground hover:text-foreground font-normal"
+              }`}
+            >
+              {link.name}
+            </button>
+          )
+        })}
+      </nav>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <Button className="rounded-full px-6">
-              Book a call
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
+      {/* Mobile nav */}
+      <div className="sm:hidden w-full">
+        <div className="flex items-center justify-between bg-secondary border border-border rounded-2xl px-5 py-3 shadow-2xl">
+          <span className="text-foreground text-sm font-semibold font-sans">archana</span>
           <button
-            className="md:hidden p-2"
             onClick={() => setIsOpen(!isOpen)}
+            className="text-foreground p-1"
+            aria-label="Toggle menu"
           >
             {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
-      </div>
 
-      {/* Mobile Navigation */}
-      {isOpen && (
-        <div className="md:hidden bg-background border-b border-border">
-          <div className="px-6 py-4 space-y-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <Button className="w-full rounded-full">
-              Book a call
-            </Button>
+        {isOpen && (
+          <div className="mt-2 bg-secondary border border-border rounded-2xl px-2 py-2 shadow-2xl flex flex-col gap-1">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.replace("#", "")
+              return (
+                <button
+                  key={link.name}
+                  onClick={() => handleNavClick(link.href)}
+                  className={`w-full text-left px-5 py-3 rounded-xl text-sm transition-all duration-200 font-sans ${
+                    isActive
+                      ? "bg-foreground text-background font-semibold"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {link.name}
+                </button>
+              )
+            })}
           </div>
-        </div>
-      )}
-    </nav>
+        )}
+      </div>
+    </header>
   )
 }
