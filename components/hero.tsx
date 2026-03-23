@@ -1,111 +1,82 @@
 "use client"
 
-import { ArrowDown, Linkedin, Mail, Twitter } from "lucide-react"
+import { Linkedin, Twitter, Mail, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
+
+const socialLinks = [
+  { icon: Linkedin, href: "https://linkedin.com/in/archana", label: "LinkedIn" },
+  { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+  { icon: Mail, href: "mailto:archana.dharaneedharan@gmail.com", label: "Email" },
+]
 
 export function Hero() {
   return (
-    <section className="min-h-screen flex flex-col lg:flex-row">
-      {/* Left Panel - Sticky on desktop */}
-      <div className="lg:w-2/5 lg:fixed lg:h-screen lg:left-0 lg:top-0 flex flex-col justify-between p-8 lg:p-12 border-b lg:border-b-0 lg:border-r border-border">
-        <div>
-          <h1 className="font-serif text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-4 text-balance">
-            Archana Dharaneedharan
-          </h1>
-          <p className="text-xl lg:text-2xl text-primary font-medium mb-6">
-            Marketing Analyst
-          </p>
-          <p className="text-muted-foreground leading-relaxed max-w-md">
-            Transforming complex data into actionable marketing strategies.
-            Specializing in consumer insights, campaign optimization, and predictive analytics.
-          </p>
-        </div>
-
-        <nav className="hidden lg:flex flex-col gap-4 my-8">
-          <a href="#about" className="text-muted-foreground hover:text-primary transition-colors text-sm uppercase tracking-wider">
-            About
-          </a>
-          <a href="#experience" className="text-muted-foreground hover:text-primary transition-colors text-sm uppercase tracking-wider">
-            Experience
-          </a>
-          <a href="#projects" className="text-muted-foreground hover:text-primary transition-colors text-sm uppercase tracking-wider">
-            Projects
-          </a>
-          <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors text-sm uppercase tracking-wider">
-            Contact
-          </a>
-        </nav>
-
-        <div className="flex items-center gap-4">
-          <Button variant="ghost" size="icon" asChild>
-            <a href="mailto:archana.dharaneedharan@gmail.com" aria-label="Email">
-              <Mail className="h-5 w-5" />
-            </a>
-          </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <Linkedin className="h-5 w-5" />
-            </a>
-          </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-              <Twitter className="h-5 w-5" />
-            </a>
-          </Button>
-        </div>
-      </div>
-
-      {/* Right Panel - Scrollable content */}
-      <div className="lg:w-3/5 lg:ml-[40%]">
-        {/* About Section */}
-        <section id="about" className="min-h-screen flex flex-col justify-center p-8 lg:p-12 xl:p-16">
-          <div className="max-w-2xl">
-            <h2 className="text-sm uppercase tracking-wider text-primary mb-8">About</h2>
-            <div className="space-y-6 text-muted-foreground leading-relaxed">
-              <p>
-                With over 7 years of experience in marketing analytics, I help brands understand their customers
-                and optimize their marketing spend through data-driven insights. My approach combines statistical
-                rigor with creative problem-solving.
-              </p>
-              <p>
-                I've worked with Fortune 500 companies and fast-growing startups across retail, tech, and
-                consumer goods industries. My expertise includes multi-touch attribution, customer segmentation,
-                marketing mix modeling, and A/B testing frameworks.
-              </p>
-              <p>
-                When I'm not diving into datasets, you can find me speaking at marketing conferences,
-                mentoring aspiring analysts, or exploring the latest in machine learning applications for marketing.
-              </p>
+    <section className="min-h-screen pt-20 lg:pt-24">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12 lg:gap-20 py-12 lg:py-20">
+          {/* Left Content */}
+          <div className="flex-1 max-w-2xl">
+            {/* Social Links - Vertical on desktop */}
+            <div className="flex lg:flex-col gap-4 mb-8">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target={social.href.startsWith("http") ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
+                  aria-label={social.label}
+                >
+                  <social.icon className="h-4 w-4" />
+                </a>
+              ))}
             </div>
 
-            <div className="mt-12 grid grid-cols-2 gap-8">
-              <div>
-                <p className="text-3xl font-serif font-bold text-foreground">50+</p>
-                <p className="text-sm text-muted-foreground mt-1">Projects Delivered</p>
-              </div>
-              <div>
-                <p className="text-3xl font-serif font-bold text-foreground">$12M+</p>
-                <p className="text-sm text-muted-foreground mt-1">Marketing ROI Generated</p>
-              </div>
-              <div>
-                <p className="text-3xl font-serif font-bold text-foreground">15+</p>
-                <p className="text-sm text-muted-foreground mt-1">Enterprise Clients</p>
-              </div>
-              <div>
-                <p className="text-3xl font-serif font-bold text-foreground">7+</p>
-                <p className="text-sm text-muted-foreground mt-1">Years Experience</p>
-              </div>
-            </div>
+            {/* Main Heading */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-foreground leading-tight tracking-tight">
+              Marketing analytics{" "}
+              <br className="hidden sm:block" />
+              done <span className="font-serif italic">right</span>
+            </h1>
 
-            <button 
-              onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
-              className="mt-16 animate-bounce cursor-pointer hover:text-primary transition-colors"
-              aria-label="Scroll to experience section"
-            >
-              <ArrowDown className="h-6 w-6 text-muted-foreground hover:text-primary" />
-            </button>
+            {/* Description */}
+            <p className="mt-6 text-muted-foreground text-lg max-w-md leading-relaxed">
+              I help brands grow with data-driven strategies, turning complex insights into clear actions that drive real results.
+            </p>
+
+            {/* CTA Button */}
+            <div className="mt-8">
+              <Button 
+                size="lg" 
+                className="rounded-full px-8 gap-2 group"
+                asChild
+              >
+                <a href="#contact">
+                  Book a call
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </a>
+              </Button>
+            </div>
           </div>
-        </section>
+
+          {/* Right - Profile Image */}
+          <div className="flex-shrink-0">
+            <div className="relative w-64 h-80 sm:w-80 sm:h-96 lg:w-96 lg:h-[480px] rounded-3xl overflow-hidden bg-muted">
+              <Image
+                src="/profile.jpg"
+                alt="Archana Dharaneedharan"
+                fill
+                className="object-cover"
+                priority
+              />
+              {/* Decorative element */}
+              <div className="absolute bottom-6 right-6 w-12 h-12 rounded-full bg-background flex items-center justify-center">
+                <span className="text-2xl">✦</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )

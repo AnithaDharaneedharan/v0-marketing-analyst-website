@@ -1,79 +1,101 @@
+"use client"
+
+import { ArrowUpRight } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 
 const experiences = [
   {
+    period: "2022 — Present",
     title: "Senior Marketing Analyst",
-    company: "TechCorp Inc.",
-    period: "2022 - Present",
-    description: "Leading marketing analytics for a $50M annual marketing budget. Built attribution models that improved ROAS by 34%.",
-    skills: ["Python", "SQL", "Tableau", "Google Analytics 4", "BigQuery"]
+    company: "TechCorp",
+    companyUrl: "#",
+    description: "Lead marketing analytics for a $50M annual budget. Build and maintain attribution models used across the organization.",
+    skills: ["Python", "SQL", "Tableau", "BigQuery", "GA4"]
   },
   {
+    period: "2019 — 2022",
     title: "Marketing Analyst",
     company: "RetailMax",
-    period: "2019 - 2022",
-    description: "Developed customer segmentation models and personalization strategies that increased email conversion rates by 28%.",
-    skills: ["R", "Adobe Analytics", "Salesforce Marketing Cloud", "A/B Testing"]
+    companyUrl: "#",
+    description: "Developed customer segmentation models and personalization strategies. Created automated reporting dashboards.",
+    skills: ["R", "Adobe Analytics", "Salesforce", "A/B Testing"]
   },
   {
+    period: "2017 — 2019",
     title: "Junior Data Analyst",
     company: "StartupXYZ",
-    period: "2017 - 2019",
-    description: "Built dashboards and reports for marketing team. Implemented first attribution model for the organization.",
+    companyUrl: "#",
+    description: "Built foundational dashboards and reports for marketing team. Implemented multi-touch attribution model.",
     skills: ["Excel", "Google Analytics", "Data Studio", "SQL"]
   }
 ]
 
 export function Experience() {
   return (
-    <section id="experience" className="lg:ml-[40%] p-8 lg:p-12 xl:p-16 border-t border-border">
-      <div className="max-w-2xl">
-        <h2 className="text-sm uppercase tracking-wider text-primary mb-12">Experience</h2>
-        
-        <div className="space-y-12">
+    <section id="experience" className="py-20 lg:py-32 bg-card">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-4">
+            Experience
+          </p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-foreground">
+            Where I&apos;ve{" "}
+            <span className="font-serif italic">worked</span>
+          </h2>
+        </div>
+
+        {/* Experience Cards */}
+        <div className="space-y-6 max-w-4xl mx-auto">
           {experiences.map((exp, index) => (
-            <div key={index} className="group">
-              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
-                <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
-                  {exp.title}
-                </h3>
-                <span className="text-sm text-muted-foreground">{exp.period}</span>
+            <a
+              key={index}
+              href={exp.companyUrl}
+              className="group block bg-background p-6 sm:p-8 rounded-2xl border border-border hover:border-foreground/20 hover:shadow-lg transition-all duration-300"
+            >
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <h3 className="text-lg sm:text-xl font-semibold text-foreground group-hover:text-accent transition-colors">
+                      {exp.title}
+                    </h3>
+                    <ArrowUpRight className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                  <p className="text-muted-foreground font-medium mb-3">
+                    {exp.company}
+                  </p>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    {exp.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {exp.skills.map((skill, skillIndex) => (
+                      <Badge 
+                        key={skillIndex} 
+                        variant="secondary" 
+                        className="text-xs font-medium rounded-full"
+                      >
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+                <span className="text-sm text-muted-foreground whitespace-nowrap">
+                  {exp.period}
+                </span>
               </div>
-              <p className="text-primary mb-3">{exp.company}</p>
-              <p className="text-muted-foreground leading-relaxed mb-4">{exp.description}</p>
-              <div className="flex flex-wrap gap-2">
-                {exp.skills.map((skill, skillIndex) => (
-                  <Badge key={skillIndex} variant="secondary" className="text-xs">
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
-            </div>
+            </a>
           ))}
         </div>
 
-        <div className="mt-16 pt-8 border-t border-border">
-          <h3 className="text-lg font-semibold text-foreground mb-6">Education</h3>
-          <div className="space-y-4">
-            <div>
-              <p className="text-foreground font-medium">M.S. Business Analytics</p>
-              <p className="text-muted-foreground">University of California, Berkeley - 2017</p>
-            </div>
-            <div>
-              <p className="text-foreground font-medium">B.S. Marketing</p>
-              <p className="text-muted-foreground">University of Michigan - 2015</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-12 pt-8 border-t border-border">
-          <h3 className="text-lg font-semibold text-foreground mb-6">Certifications</h3>
-          <div className="flex flex-wrap gap-2">
-            <Badge variant="outline">Google Analytics Certified</Badge>
-            <Badge variant="outline">Tableau Desktop Specialist</Badge>
-            <Badge variant="outline">HubSpot Marketing Software</Badge>
-            <Badge variant="outline">Meta Marketing Analytics</Badge>
-          </div>
+        {/* View Resume Link */}
+        <div className="text-center mt-12">
+          <a 
+            href="/resume.pdf" 
+            className="inline-flex items-center gap-2 text-foreground font-medium hover:text-accent transition-colors group"
+          >
+            View Full Resume
+            <ArrowUpRight className="h-4 w-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
+          </a>
         </div>
       </div>
     </section>
