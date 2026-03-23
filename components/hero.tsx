@@ -1,164 +1,213 @@
 "use client"
 
-import { ArrowDown, Linkedin, Mail, Twitter, FileText } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { useState, useEffect } from "react"
+import { Linkedin, Mail, Github, Menu, X } from "lucide-react"
 
-const contactLinks = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "archana.dharaneedharan@gmail.com",
-    href: "mailto:archana.dharaneedharan@gmail.com"
-  },
-  {
-    icon: Linkedin,
-    label: "LinkedIn",
-    value: "linkedin.com/in/archana",
-    href: "https://linkedin.com/in/archana"
-  },
-  {
-    icon: Twitter,
-    label: "Twitter",
-    value: "@archanaanalyst",
-    href: "https://twitter.com/archanaanalyst"
-  },
-  {
-    icon: FileText,
-    label: "Resume",
-    value: "Download PDF",
-    href: "/resume.pdf"
-  }
+const navLinks = [
+  { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
+]
+
+const socialLinks = [
+  { icon: Github, href: "https://github.com", label: "GitHub" },
+  { icon: Linkedin, href: "https://linkedin.com/in/archana", label: "LinkedIn" },
+  { icon: Mail, href: "mailto:archana.dharaneedharan@gmail.com", label: "Email" },
 ]
 
 export function Hero() {
+  const [activeSection, setActiveSection] = useState("about")
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["about", "experience", "projects", "contact"]
+      const scrollPosition = window.scrollY + 200
+
+      for (const section of sections) {
+        const element = document.getElementById(section)
+        if (element) {
+          const { offsetTop, offsetHeight } = element
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section)
+            break
+          }
+        }
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
   return (
-    <section className="min-h-screen flex flex-col lg:flex-row">
-      {/* Left Panel - Sticky on desktop */}
-      <div className="lg:w-2/5 lg:fixed lg:h-screen lg:left-0 lg:top-0 flex flex-col justify-between p-8 lg:p-12 border-b lg:border-b-0 lg:border-r border-border overflow-y-auto">
-        <div className="flex-1 flex flex-col justify-between">
-          <h1 className="font-serif text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-4 text-balance">
+    <div className="lg:flex">
+      {/* Fixed Sidebar - Desktop */}
+      <aside className="hidden lg:flex lg:flex-col lg:justify-between lg:fixed lg:left-0 lg:top-0 lg:h-screen lg:w-[420px] lg:px-16 lg:py-20">
+        <div>
+          <h1 className="text-5xl font-bold text-foreground tracking-tight mb-3">
             Archana Dharaneedharan
           </h1>
-          <p className="text-xl lg:text-2xl text-primary font-medium mb-6">
+          <p className="text-xl font-medium text-primary mb-6">
             Marketing Analyst
           </p>
-          <p className="text-muted-foreground leading-relaxed max-w-md">
-            Transforming complex data into actionable marketing strategies.
-            Specializing in consumer insights, campaign optimization, and predictive analytics.
+          <p className="text-muted-foreground leading-relaxed max-w-xs">
+            I build accessible, data-driven marketing strategies that blend analytics with creative storytelling.
           </p>
 
-          {/* Contact Section */}
-          <div className="mt-8 lg:mt-12">
-            <h2 className="text-sm uppercase tracking-wider text-primary mb-4">Get in Touch</h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
-              {contactLinks.map((link, index) => (
-                <a key={index} href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">
-                  <Card className="group hover:border-primary transition-colors cursor-pointer h-full">
-                    <CardContent className="p-4 flex items-start gap-3">
-                      <div className="p-2 rounded-lg bg-secondary group-hover:bg-primary/10 transition-colors flex-shrink-0">
-                        <link.icon className="h-4 w-4 text-primary" />
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-xs text-muted-foreground mb-1">{link.label}</p>
-                        <p className="text-sm text-foreground font-medium group-hover:text-primary transition-colors truncate">
-                          {link.value}
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
+          {/* Navigation */}
+          <nav className="mt-16 flex flex-col gap-1">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`group flex items-center gap-4 py-3 transition-colors ${
+                  activeSection === link.href.slice(1)
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <span
+                  className={`h-px transition-all duration-300 ${
+                    activeSection === link.href.slice(1)
+                      ? "w-16 bg-foreground"
+                      : "w-8 bg-muted-foreground group-hover:w-16 group-hover:bg-foreground"
+                  }`}
+                />
+                <span className="text-xs font-semibold uppercase tracking-widest">
+                  {link.label}
+                </span>
+              </a>
+            ))}
+          </nav>
+        </div>
+
+        {/* Social Links */}
+        <div className="flex items-center gap-5">
+          {socialLinks.map((social) => (
+            <a
+              key={social.label}
+              href={social.href}
+              target={social.href.startsWith("http") ? "_blank" : undefined}
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label={social.label}
+            >
+              <social.icon className="h-5 w-5" />
+            </a>
+          ))}
+        </div>
+      </aside>
+
+      {/* Mobile Header */}
+      <header className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+        <div className="flex items-center justify-between px-6 py-4">
+          <div>
+            <h1 className="text-lg font-bold text-foreground">Archana Dharaneedharan</h1>
+            <p className="text-sm text-primary">Marketing Analyst</p>
+          </div>
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 text-foreground"
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <nav className="px-6 pb-6 flex flex-col gap-4">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-muted-foreground hover:text-foreground transition-colors text-sm uppercase tracking-wider"
+              >
+                {link.label}
+              </a>
+            ))}
+            <div className="flex items-center gap-4 pt-4 border-t border-border">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target={social.href.startsWith("http") ? "_blank" : undefined}
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label={social.label}
+                >
+                  <social.icon className="h-5 w-5" />
                 </a>
               ))}
             </div>
-          </div>
-        </div>
+          </nav>
+        )}
+      </header>
 
-        <nav className="hidden lg:flex flex-col gap-4 my-8">
-          <a href="#about" className="text-muted-foreground hover:text-primary transition-colors text-sm uppercase tracking-wider">
-            About
-          </a>
-          <a href="#experience" className="text-muted-foreground hover:text-primary transition-colors text-sm uppercase tracking-wider">
-            Experience
-          </a>
-          <a href="#projects" className="text-muted-foreground hover:text-primary transition-colors text-sm uppercase tracking-wider">
-            Projects
-          </a>
-          <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors text-sm uppercase tracking-wider">
-            Contact
-          </a>
-        </nav>
-
-        <div className="flex items-center gap-4">
-          <Button variant="ghost" size="icon" asChild>
-            <a href="mailto:archana.dharaneedharan@gmail.com" aria-label="Email">
-              <Mail className="h-5 w-5" />
-            </a>
-          </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <Linkedin className="h-5 w-5" />
-            </a>
-          </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-              <Twitter className="h-5 w-5" />
-            </a>
-          </Button>
-        </div>
-      </div>
-
-      {/* Right Panel - Scrollable content */}
-      <div className="lg:w-3/5 lg:ml-[40%]">
+      {/* Main Content */}
+      <main className="lg:ml-[420px] pt-24 lg:pt-0">
         {/* About Section */}
-        <section id="about" className="min-h-screen flex flex-col justify-center p-8 lg:p-12 xl:p-16">
-          <div className="max-w-2xl">
-            <h2 className="text-sm uppercase tracking-wider text-primary mb-8">About</h2>
-            <div className="space-y-6 text-muted-foreground leading-relaxed">
-              <p>
-                With over 7 years of experience in marketing analytics, I help brands understand their customers
-                and optimize their marketing spend through data-driven insights. My approach combines statistical
-                rigor with creative problem-solving.
-              </p>
-              <p>
-                I've worked with Fortune 500 companies and fast-growing startups across retail, tech, and
-                consumer goods industries. My expertise includes multi-touch attribution, customer segmentation,
-                marketing mix modeling, and A/B testing frameworks.
-              </p>
-              <p>
-                When I'm not diving into datasets, you can find me speaking at marketing conferences,
-                mentoring aspiring analysts, or exploring the latest in machine learning applications for marketing.
-              </p>
-            </div>
+        <section id="about" className="min-h-screen flex items-center px-6 lg:px-20 py-20">
+          <div className="max-w-xl">
+            <p className="text-muted-foreground leading-relaxed mb-6">
+              I&apos;m a passionate marketing analyst focused on crafting{" "}
+              <span className="text-foreground font-medium">accessible, data-driven</span>{" "}
+              marketing strategies. My work lies at the intersection of analytics and creative storytelling,
+              creating campaigns that not only perform but{" "}
+              <span className="text-foreground font-medium">resonate with audiences</span>.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-6">
+              Currently, I&apos;m a Senior Marketing Analyst at{" "}
+              <a href="#" className="text-primary hover:underline font-medium">TechCorp</a>,
+              specializing in attribution modeling. I build and maintain analytical frameworks
+              that power marketing decisions across the organization, ensuring our strategies
+              meet both performance and ROI standards.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-6">
+              In the past, I&apos;ve had the opportunity to analyze marketing data across a variety of
+              settings — from{" "}
+              <span className="text-foreground font-medium">Fortune 500 companies</span>{" "}
+              and{" "}
+              <span className="text-foreground font-medium">fast-growing startups</span>{" "}
+              to{" "}
+              <span className="text-foreground font-medium">e-commerce brands</span>.
+              I also mentor aspiring analysts and speak at industry conferences.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              When I&apos;m not diving into datasets, you&apos;ll find me exploring new visualization
+              techniques, reading about behavioral economics, or hiking with my camera.
+            </p>
 
-            <div className="mt-12 grid grid-cols-2 gap-8">
-              <div>
-                <p className="text-3xl font-serif font-bold text-foreground">50+</p>
-                <p className="text-sm text-muted-foreground mt-1">Projects Delivered</p>
-              </div>
-              <div>
-                <p className="text-3xl font-serif font-bold text-foreground">$12M+</p>
-                <p className="text-sm text-muted-foreground mt-1">Marketing ROI Generated</p>
-              </div>
-              <div>
-                <p className="text-3xl font-serif font-bold text-foreground">15+</p>
-                <p className="text-sm text-muted-foreground mt-1">Enterprise Clients</p>
-              </div>
-              <div>
-                <p className="text-3xl font-serif font-bold text-foreground">7+</p>
-                <p className="text-sm text-muted-foreground mt-1">Years Experience</p>
+            {/* Contact Info */}
+            <div className="mt-12 pt-8 border-t border-border">
+              <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
+                Get in Touch
+              </h3>
+              <div className="space-y-3">
+                <a 
+                  href="mailto:archana.dharaneedharan@gmail.com" 
+                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <Mail className="h-4 w-4" />
+                  <span>archana.dharaneedharan@gmail.com</span>
+                </a>
+                <a 
+                  href="https://linkedin.com/in/archana" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <Linkedin className="h-4 w-4" />
+                  <span>linkedin.com/in/archana</span>
+                </a>
               </div>
             </div>
-
-            <button 
-              onClick={() => document.getElementById('experience')?.scrollIntoView({ behavior: 'smooth' })}
-              className="mt-16 animate-bounce cursor-pointer hover:text-primary transition-colors"
-              aria-label="Scroll to experience section"
-            >
-              <ArrowDown className="h-6 w-6 text-muted-foreground hover:text-primary" />
-            </button>
           </div>
         </section>
-      </div>
-    </section>
+      </main>
+    </div>
   )
 }

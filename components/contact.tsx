@@ -1,60 +1,44 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Mail, Linkedin, Twitter, FileText } from "lucide-react"
-
-const contactLinks = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "sarah@example.com",
-    href: "mailto:sarah@example.com"
-  },
-  {
-    icon: Linkedin,
-    label: "LinkedIn",
-    value: "/in/sarahmitchell",
-    href: "https://linkedin.com/in/sarahmitchell"
-  },
-  {
-    icon: Twitter,
-    label: "Twitter",
-    value: "@sarahanalytics",
-    href: "https://twitter.com/sarahanalytics"
-  },
-  {
-    icon: FileText,
-    label: "Resume",
-    value: "Download PDF",
-    href: "/resume.pdf"
-  }
-]
+import { Mail } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 export function Contact() {
   return (
-    <section id="contact" className="lg:ml-[40%] p-8 lg:p-12 xl:p-16 border-t border-border">
-      <div className="max-w-2xl">
-        <h2 className="text-sm uppercase tracking-wider text-primary mb-4">Get in Touch</h2>
-        <p className="text-2xl lg:text-3xl font-serif text-foreground mb-8 text-balance">
-          {"Let's discuss how data can drive your marketing success."}
+    <section id="contact" className="lg:ml-[420px] px-6 lg:px-20 py-20">
+      <div className="max-w-xl">
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-6">
+          Contact
+        </h2>
+        <p className="text-muted-foreground leading-relaxed mb-8">
+          If you would like to discuss a project, have a question, or just want to say hi,
+          I&apos;m always happy to chat. Feel free to reach out!
         </p>
         
-        <div className="grid sm:grid-cols-2 gap-4">
-          {contactLinks.map((link, index) => (
-            <a key={index} href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer">
-              <Card className="group hover:border-primary transition-colors cursor-pointer h-full">
-                <CardContent className="p-6 flex items-start gap-4">
-                  <div className="p-2 rounded-lg bg-secondary group-hover:bg-primary/10 transition-colors">
-                    <link.icon className="h-5 w-5 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-1">{link.label}</p>
-                    <p className="text-foreground font-medium group-hover:text-primary transition-colors">
-                      {link.value}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </a>
-          ))}
+        <Button asChild className="rounded-full">
+          <a href="mailto:archana.dharaneedharan@gmail.com" className="inline-flex items-center gap-2">
+            <Mail className="h-4 w-4" />
+            Say Hello
+          </a>
+        </Button>
+
+        <div className="mt-16 pt-8 border-t border-border">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm text-muted-foreground">
+            <div>
+              <span className="text-xs font-semibold uppercase tracking-widest">Mail</span>
+              <p className="mt-1">
+                <a href="mailto:archana.dharaneedharan@gmail.com" className="hover:text-primary transition-colors">
+                  archana.dharaneedharan@gmail.com
+                </a>
+              </p>
+            </div>
+            <div>
+              <span className="text-xs font-semibold uppercase tracking-widest">LinkedIn</span>
+              <p className="mt-1">
+                <a href="https://linkedin.com/in/archana" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+                  @archana
+                </a>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
