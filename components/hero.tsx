@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
 const socialLinks = [
-  { icon: Linkedin, href: "https://linkedin.com/in/archana", label: "LinkedIn" },
+  { icon: Linkedin, href: "https://linkedin.com/in/arch2025", label: "LinkedIn" },
   { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
   { icon: Mail, href: "mailto:archana.dharaneedharan@gmail.com", label: "Email" },
 ]
@@ -35,10 +35,14 @@ export function Hero() {
 
             {/* Main Heading */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-foreground leading-tight tracking-tight">
+              <span className="block text-3xl sm:text-4xl lg:text-5xl mb-2 text-primary font-serif">Archana Dharaneedharan</span>
               Marketing analytics{" "}
               <br className="hidden sm:block" />
               done <span className="font-serif italic">right</span>
             </h1>
+
+            {/* Subtitle */}
+            <p className="mt-2 text-sm text-muted-foreground font-medium">Data-Driven Marketing Strategist</p>
 
             {/* Description */}
             <p className="mt-6 text-muted-foreground text-lg max-w-md leading-relaxed">
@@ -64,10 +68,10 @@ export function Hero() {
           <div className="flex-shrink-0">
             <div className="relative w-64 h-80 sm:w-80 sm:h-96 lg:w-96 lg:h-[480px] rounded-3xl overflow-hidden bg-muted">
               <Image
-                src="/profile.jpg"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-03-23%20at%2021.22.16-al2qnWlKFyZlbRjXqOblbJQ5uQDGUm.jpeg"
                 alt="Archana Dharaneedharan"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
                 priority
               />
               {/* Decorative element */}
