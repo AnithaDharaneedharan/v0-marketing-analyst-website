@@ -74,7 +74,7 @@ const experiences = [
 
 export function Experience() {
   return (
-    <section id="experience" className="py-20 lg:py-32 px-6 lg:px-0">
+    <section id="experience" className="py-12 lg:py-20 px-6 lg:px-0">
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground mb-16">

@@ -38,7 +38,7 @@ export function Hero() {
 
   return (
     <section id="home" className="min-h-screen flex items-center px-6 lg:px-0">
-      <div className="max-w-4xl mx-auto w-full py-20 lg:py-32">
+      <div className="max-w-4xl mx-auto w-full py-12 lg:py-20">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           {/* Photo */}
           <div className="flex-shrink-0">

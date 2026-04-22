@@ -2,7 +2,7 @@
 
 export function About() {
   return (
-    <section id="about" className="py-20 lg:py-32 px-6 lg:px-0">
+    <section id="about" className="py-12 lg:py-20 px-6 lg:px-0">
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground mb-12">
