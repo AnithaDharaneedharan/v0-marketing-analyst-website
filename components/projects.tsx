@@ -55,7 +55,7 @@ export function Projects() {
  <div className="max-w-4xl mx-auto">
  {/* Section Header - Thibaut style */}
  <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-16">
- Cool stuff I&apos;ve done
+ # Cool stuff I've done 
  </h2>
 
  {/* Projects List */}
