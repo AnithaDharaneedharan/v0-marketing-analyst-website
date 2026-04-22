@@ -4,9 +4,10 @@ import { useEffect, useState } from "react"
 
 const navLinks = [
   { name: "Home", href: "#home" },
+  { name: "Services", href: "#services" },
   { name: "Works", href: "#projects" },
   { name: "Experience", href: "#experience" },
-  { name: "About me", href: "#about" },
+  { name: "About", href: "#about" },
   { name: "Contact", href: "#contact" },
 ]
 
@@ -15,7 +16,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "projects", "experience", "about", "contact"]
+      const sections = ["home", "services", "projects", "experience", "about", "contact"]
       const scrollPosition = window.scrollY + 120
 
       for (const section of sections) {
@@ -53,7 +54,7 @@ export function Navbar() {
               className={`px-4 sm:px-6 py-2 rounded-xl text-xs sm:text-sm transition-all duration-200 font-sans ${
                 isActive
                   ? "bg-foreground text-background font-semibold"
-                  : "text-white hover:text-foreground font-normal"
+                  : "text-foreground hover:bg-muted transition-colors font-normal"
               }`}
             >
               {link.name}
