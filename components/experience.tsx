@@ -78,7 +78,7 @@ export function Experience() {
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground mb-16">
-          Where I've <span className="font-sans">worked</span>
+          # Where I've <span className="font-sans">worked</span>
         </h2>
 
         {/* Experience Cards */}

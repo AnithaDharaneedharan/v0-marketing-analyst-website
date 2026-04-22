@@ -1,29 +1,38 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Linkedin, Mail, Copy, Check } from "lucide-react"
+import { useState } from "react";
+import { Linkedin, Mail, Copy, Check } from "lucide-react";
 
 const socialLinks = [
-  { icon: Linkedin, href: "https://linkedin.com/in/arch2025", label: "LinkedIn", description: "Let's connect professionally" },
-  { icon: Mail, href: "mailto:archana.dharaneedharan@gmail.com", label: "Email", description: "For detailed inquiries" },
-]
+  {
+    icon: Linkedin,
+    href: "https://linkedin.com/in/arch2025",
+    label: "LinkedIn",
+    description: "Let's connect professionally",
+  },
+  {
+    icon: Mail,
+    href: "mailto:archana.dharaneedharan@gmail.com",
+    label: "Email",
+    description: "For detailed inquiries",
+  },
+];
 
 export function Contact() {
-  const [copied, setCopied] = useState(false)
+  const [copied, setCopied] = useState(false);
 
   const copyEmail = () => {
-    navigator.clipboard.writeText("archana.dharaneedharan@gmail.com")
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
-  }
+    navigator.clipboard.writeText("archana.dharaneedharan@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <section id="contact" className="py-20 lg:py-32 px-6 lg:px-0">
       <div className="max-w-4xl mx-auto">
         {/* Section Header - Thibaut style */}
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground mb-12">
-          # Hit me{" "}
-          <span className="font-sans">up</span>
+          # Let's <span className="font-sans">work together</span>
         </h2>
 
         {/* Contact Content */}
@@ -53,7 +62,10 @@ export function Contact() {
 
           <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
             Feel free to reach out through{" "}
-            <span className="text-foreground font-medium">LinkedIn or email</span> to get in touch!
+            <span className="text-foreground font-medium">
+              LinkedIn or email
+            </span>{" "}
+            to get in touch!
           </p>
 
           {/* Social Links */}
@@ -70,8 +82,12 @@ export function Contact() {
                   <social.icon className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="font-medium text-foreground text-sm">{social.label}</p>
-                  <p className="text-xs text-muted-foreground">{social.description}</p>
+                  <p className="font-medium text-foreground text-sm">
+                    {social.label}
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    {social.description}
+                  </p>
                 </div>
               </a>
             ))}
@@ -79,5 +95,5 @@ export function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }
