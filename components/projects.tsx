@@ -1,49 +1,54 @@
-"use client"
+"use client";
 
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
-    title: "Multi-Touch Attribution",
-    type: "Commercial Work",
-    period: "Summer 2024",
-    description: "Built a data-driven attribution model using Markov chains to accurately measure channel contribution across the entire customer journey.",
-    result: "+23% ROI",
+    title: "Fixing Analytics Blind Spots",
+    client: "codebar.io · Marketing Analytics · Plausible",
+    period: "Winter 2026",
+    description:
+      "codebar had analytics—but no answers. No funnels, no conversions, no visibility into user behaviour.\n\nI rebuilt the tracking strategy under strict constraints (privacy-first, no user-level data, OAuth gaps) to uncover where users actually drop off.\n\n→ The biggest problem wasn't what we couldn't measure—it's how we designed around it.",
+    result:
+      "Designing a conversion funnel when you can't track the most important step",
     image: "/project-1.jpg",
-    link: "#",
-    breakdown: "View Case Study"
+    link: "https://www.notion.so/Case-Study-1-Marketing-Analytics-with-Plausible-34ab9e2d5ee2800d81b7e9fc8fa2d883",
+    breakdown: "View Case Study",
   },
   {
-    title: "Customer Segmentation",
-    type: "Commercial Work", 
+    title: "18K Downloads. 17 Markets. One Campaign.",
+    client: "Mercedes-Benz · Campaign Analytics · Global Launch",
     period: "Winter 2023",
-    description: "Developed RFM-based segmentation with K-means clustering enabling personalized marketing campaigns and improved targeting.",
-    result: "+18% Revenue",
+    description:
+      "Launching a flagship car globally means 17 markets, 458 assets, and zero room for off-brand execution.\n\nI delivered a post-campaign adaptation analysis for the E-Class W214 launch—tracking how markets adapted, what they ignored, and where consistency broke down. 91% adaptation rate. 88% headline compliance.\n\n→ Global campaigns don't fail on strategy. They fail on follow-through.",
+    result: "18K+ downloads · 91% adaptation rate",
     image: "/project-2.jpg",
-    link: "#",
-    breakdown: "View Case Study"
+    link: "https://www.notion.so/Case-Study-2-Content-Marketing-34ab9e2d5ee28016aeb1e6c8d08e518c",
+    breakdown: "View Case Study",
   },
   {
-    title: "Sentiment Dashboard",
-    type: "Personal Project",
-    period: "Fall 2023",
-    description: "Created real-time sentiment tracking dashboard analyzing 100K+ social mentions daily with NLP and predictive analytics.",
-    result: "100K+ daily",
+    title: "The Approval Process Had No Clock. I Built One.",
+    client: "Mercedes-Benz · Process & Operations · Omnicom",
+    period: "December 2024",
+    description:
+      "Mercedes-Benz's CGP approval process had no way to measure how long feedback actually took—across markets, tiers, or campaign types. Bottlenecks were invisible.\n\nI extracted data from individual Asana tickets, cleaned and structured it in Excel, and built a benchmark report comparing Q4 2024 against the full-year baseline—delivered directly to the MB RO.COS client team.\n\n→ October was the busiest month of the year. It was also the fastest. That told us the process had matured.",
+    result: "33% faster approvals · 4.6-day avg. turnaround",
     image: "/project-3.jpg",
-    link: "#",
-    breakdown: "View Case Study"
+    link: "https://www.notion.so/Case-Study-3-Process-Analysis-and-Reporting-34ab9e2d5ee28044884aceb0da6c4142",
+    breakdown: "View Case Study",
   },
   {
     title: "GTM Strategy Framework",
-    type: "Commercial Work",
+    client: "Commercial Work",
     period: "Spring 2023",
-    description: "Designed comprehensive go-to-market strategy framework for SaaS product launch, achieving 150% of target MRR.",
+    description:
+      "Designed comprehensive go-to-market strategy framework for SaaS product launch, achieving 150% of target MRR.",
     result: "$30M pipeline",
     image: "/project-1.jpg",
     link: "#",
-    breakdown: "View Case Study"
-  }
-]
+    breakdown: "View Case Study",
+  },
+];
 
 export function Projects() {
   return (
@@ -51,8 +56,7 @@ export function Projects() {
       <div className="max-w-4xl mx-auto">
         {/* Section Header - Thibaut style */}
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground mb-16">
-          # Cool stuff I've{" "}
-          <span className="font-sans">done</span>
+          # Cool stuff I've <span className="font-sans">done</span>
         </h2>
 
         {/* Projects List */}
@@ -90,7 +94,7 @@ export function Projects() {
 
                     {/* Meta */}
                     <div className="flex items-center gap-3 text-sm text-muted-foreground mb-4">
-                      <span>{project.type}</span>
+                      <span>{project.client}</span>
                       <span className="w-1 h-1 rounded-full bg-muted-foreground" />
                       <span>{project.period}</span>
                     </div>
@@ -114,5 +118,5 @@ export function Projects() {
         </div>
       </div>
     </section>
-  )
+  );
 }
