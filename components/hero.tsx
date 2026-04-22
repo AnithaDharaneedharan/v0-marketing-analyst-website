@@ -44,7 +44,7 @@ export function Hero() {
           <div className="flex-shrink-0 order-2 lg:order-1">
             <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden bg-muted border-2 border-border shadow-2xl">
               <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-03-23%20at%2021.22.16-al2qnWlKFyZlbRjXqOblbJQ5uQDGUm.jpeg"
+                src="/archana.jpg"
                 alt="Archana Dharaneedharan"
                 className="w-full h-full object-cover object-top"
               />
