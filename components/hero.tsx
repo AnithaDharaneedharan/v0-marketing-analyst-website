@@ -98,7 +98,7 @@ export function Hero() {
                 See my work <ArrowRight className="h-4 w-4" />
               </a>
               <a
-                href="/archana-dharaneedharan-cv.pdf"
+                href="/Growth_Marketer_English.pdf"
                 download
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-border bg-card text-foreground text-sm font-medium hover:border-foreground/30 transition-colors"
               >
