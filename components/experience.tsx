@@ -1,31 +1,76 @@
-"use client"
+"use client";
 
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight } from "lucide-react";
 
 const experiences = [
   {
-    period: "2022 — Present",
-    title: "Senior Marketing Analyst",
-    company: "TechCorp",
-    description: "Lead marketing analytics for a $50M annual budget. Build and maintain attribution models used across the organization.",
-    skills: ["Python", "SQL", "Tableau", "BigQuery", "GA4"],
-    featured: true
+    period: "03/2025 — 09/2025",
+    title: "Marketing Specialist (Contract)",
+    company: "Software & Support Media · Berlin, Germany",
+    description:
+      "Designed and executed full-funnel B2B demand generation campaigns for software conferences, driving qualified pipeline through events, webinars, and paid digital channels. Increased MQL-to-SQL conversion by 18% through audience segmentation refinement and A/B-tested landing page CTAs. Achieved +35% conference attendance lift via integrated multi-channel promotion. Set up Looker Studio & GA4 to track campaign ROI, funnel velocity, and engagement KPIs.",
+    skills: [
+      "Google Ads",
+      "LinkedIn Ads",
+      "GA4",
+      "Looker Studio",
+      "A/B Testing",
+      "Salesforce",
+    ],
+    featured: true,
   },
   {
-    period: "2019 — 2022",
-    title: "Marketing Analyst",
-    company: "RetailMax",
-    description: "Developed customer segmentation models and personalization strategies. Created automated reporting dashboards.",
-    skills: ["R", "Adobe Analytics", "Salesforce", "A/B Testing"]
+    period: "02/2023 — 12/2024",
+    title: "Marketing Specialist – Content & Campaign Lead",
+    company: "RAPP UK (Omnicom Media Group) · London, United Kingdom",
+    description:
+      "Led multi-channel campaign strategy and performance analysis for Mercedes-Benz EQV campaigns across 36 EMEA and global markets. Improved cross-market delivery efficiency by 20% through process redesign and structured reporting frameworks. Conducted post-campaign performance analysis surfacing insights that directly informed future budget reallocation. Led end-to-end localisation for DACH and EMEA markets across digital, OOH, and print.",
+    skills: [
+      "Campaign Analytics",
+      "EMEA Localisation",
+      "Performance Reporting",
+      "Asana",
+      "Stakeholder Management",
+    ],
   },
   {
-    period: "2017 — 2019",
-    title: "Junior Data Analyst",
-    company: "StartupXYZ",
-    description: "Built foundational dashboards and reports for marketing team. Implemented multi-touch attribution model.",
-    skills: ["Excel", "Google Analytics", "Data Studio", "SQL"]
-  }
-]
+    period: "02/2023 — 09/2023",
+    title: "Marketing Manager (Contract)",
+    company: "Tjarks and Tjarks Design Group · London, United Kingdom",
+    description:
+      "Executed localised growth campaigns for German-speaking markets, managing content workflows end-to-end from brief to delivery. Reduced campaign turnaround time by 25% through structured stakeholder alignment, approval workflows, and process documentation.",
+    skills: [
+      "Content Strategy",
+      "Localisation",
+      "Campaign Management",
+      "German",
+    ],
+  },
+  {
+    period: "09/2020 — 08/2021",
+    title: "Localisation Manager",
+    company: "Tag · Chennai, India",
+    description:
+      "Managed localisation of global B2B marketing campaigns across 15+ language markets including EMEA, ensuring message accuracy and cultural relevance at scale.",
+    skills: ["Localisation", "B2B Marketing", "EMEA", "Project Management"],
+  },
+  {
+    period: "12/2018 — 08/2020",
+    title: "Technical Translator – German",
+    company: "Vestas R&D · Chennai, India",
+    description:
+      "Produced bilingual (EN/DE) technical reports and supported DACH client communications for wind energy feasibility and performance projects with TÜV Nord and DNV.",
+    skills: ["German", "Technical Writing", "Translation", "DACH"],
+  },
+  {
+    period: "09/2014 — 12/2018",
+    title: "Business Development Sales Executive",
+    company: "Häfele · Chennai, India",
+    description:
+      "Identified new market opportunities and secured strategic partnerships, achieving 20% revenue growth and a 25% improvement in customer retention through consultive sales and tailored solutions.",
+    skills: ["B2B Sales", "Business Development", "CRM", "Market Strategy"],
+  },
+];
 
 export function Experience() {
   return (
@@ -33,8 +78,7 @@ export function Experience() {
       <div className="max-w-4xl mx-auto">
         {/* Section Header */}
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-foreground mb-16">
-          Where I've{" "}
-          <span className="font-sans">worked</span>
+          Where I've <span className="font-sans">worked</span>
         </h2>
 
         {/* Experience Cards */}
@@ -47,13 +91,17 @@ export function Experience() {
               {/* Header */}
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
                 <div className="flex-1">
-                  <h3 className={`text-xl font-semibold mb-2 flex items-center gap-2 ${
-                    exp.featured ? "text-accent" : "text-foreground"
-                  }`}>
+                  <h3
+                    className={`text-xl font-semibold mb-2 flex items-center gap-2 ${
+                      exp.featured ? "text-accent" : "text-foreground"
+                    }`}
+                  >
                     {exp.title}
                     {exp.featured && <ArrowUpRight className="h-4 w-4" />}
                   </h3>
-                  <p className="text-muted-foreground font-medium">{exp.company}</p>
+                  <p className="text-muted-foreground font-medium">
+                    {exp.company}
+                  </p>
                 </div>
                 <span className="text-sm text-muted-foreground whitespace-nowrap">
                   {exp.period}
@@ -81,5 +129,5 @@ export function Experience() {
         </div>
       </div>
     </section>
-  )
+  );
 }
