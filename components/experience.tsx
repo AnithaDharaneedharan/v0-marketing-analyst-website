@@ -91,11 +91,7 @@ export function Experience() {
               {/* Header */}
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
                 <div className="flex-1">
-                  <h3
-                    className={`text-xl font-semibold mb-2 flex items-center gap-2 ${
-                      exp.featured ? "text-accent" : "text-foreground"
-                    }`}
-                  >
+                  <h3 className="text-xl font-semibold mb-2 flex items-center gap-2 text-accent">
                     {exp.title}
                     {exp.featured && <ArrowUpRight className="h-4 w-4" />}
                   </h3>
