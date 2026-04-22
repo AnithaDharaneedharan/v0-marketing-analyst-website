@@ -9,8 +9,7 @@ const projects = [
     period: "Winter 2026",
     description:
       "codebar had analytics—but no answers. No funnels, no conversions, no visibility into user behaviour.\n\nI rebuilt the tracking strategy under strict constraints (privacy-first, no user-level data, OAuth gaps) to uncover where users actually drop off.\n\n→ The biggest problem wasn't what we couldn't measure—it's how we designed around it.",
-    result:
-      "Designing a conversion funnel when you can't track the most important step",
+    result: "Analytics under constraints",
     image: "/project-1.jpg",
     link: "https://www.notion.so/Case-Study-1-Marketing-Analytics-with-Plausible-34ab9e2d5ee2800d81b7e9fc8fa2d883",
     breakdown: "View Case Study",

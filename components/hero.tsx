@@ -37,11 +37,11 @@ export function Hero() {
   }, [displayed, deleting, roleIndex]);
 
   return (
-    <section id="home" className="min-h-screen flex items-center px-6 lg:px-0">
+    <section id="home" className="flex items-center px-6 lg:px-0">
       <div className="max-w-4xl mx-auto w-full py-12 lg:py-20">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           {/* Photo */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 order-2 lg:order-1">
             <div className="w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden bg-muted border-2 border-border shadow-2xl">
               <img
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-03-23%20at%2021.22.16-al2qnWlKFyZlbRjXqOblbJQ5uQDGUm.jpeg"
@@ -52,7 +52,7 @@ export function Hero() {
           </div>
 
           {/* Text */}
-          <div className="flex-1 text-center lg:text-left">
+          <div className="flex-1 text-center lg:text-left order-1 lg:order-2">
             {/* Availability badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-card text-sm text-muted-foreground mb-6">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
