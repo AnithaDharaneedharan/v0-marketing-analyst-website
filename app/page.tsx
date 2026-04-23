@@ -1,11 +1,10 @@
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
-import { Services } from "@/components/services";
 import { Projects } from "@/components/projects";
 import { Experience } from "@/components/experience";
 import { About } from "@/components/about";
 import { Contact } from "@/components/contact";
-import { Footer } from "@/components/footer";
+import { ScrollToTop } from "@/components/scroll-to-top";
 
 export default function Home() {
   return (
@@ -13,12 +12,11 @@ export default function Home() {
       <Navbar />
       <div className="pt-16">
         <Hero />
-        <Services />
         <Projects />
         <Experience />
         <About />
         <Contact />
-        <Footer />
+        <ScrollToTop />
       </div>
     </main>
   );
